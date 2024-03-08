@@ -23,6 +23,6 @@
       /* If your code doesn't run in the DOM: */
       "lib": ["es2022"]
     },
-    "include": ["./src/**/*"],
+    "include": ["./src/**/*", "src/controllers/.ts"],
     "exclude": ["./src/**/*.test.ts", "./src/**/*.spec.ts"]
   }

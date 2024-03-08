@@ -14,6 +14,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/hello": "http://localhost:3000",
+      "/process-image": "http://localhost:3000",
     },
   },
 });
