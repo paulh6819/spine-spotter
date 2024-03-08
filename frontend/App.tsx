@@ -1,12 +1,21 @@
 import "./App.css";
-import React from "react";
-import Navigation from "../src/components/Navigation";
+
+import Navigation from "./components/Navigation";
+import DropArea from "./components/DropArea";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Navigation />
-      <h1>Frontend working</h1>
+      <main className="main-container">
+        <h1 style={{ color: "#4c4b4b" }}>
+          How much are the books worth infront of you?
+        </h1>
+
+        <DropArea />
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -1,13 +1,12 @@
 import React from "react";
+import styles from "./Navigation.module.css";
 
 const Navigation: React.FC = () => {
   return (
     <nav>
-      <ul className="menu">
+      <ul className={styles.list}>
         <li>
-          <a className="menu-category" href="/about">
-            About
-          </a>
+          <a href="/about">About</a>
         </li>
         <li>
           <a href="/contact">Contact</a>
@@ -15,7 +14,7 @@ const Navigation: React.FC = () => {
         <li>
           <a href="/sign-up">Sign up</a>
         </li>
-        <li id="login-button">
+        <li className={styles["login-button"]}>
           <a href="/login">Login</a>
         </li>
       </ul>

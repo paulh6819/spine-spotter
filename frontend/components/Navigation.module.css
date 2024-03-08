@@ -1,0 +1,41 @@
+.list {
+  list-style: none;
+  list-style-type: none;
+  margin: 15px;
+  padding: 7px;
+  text-align: left;
+  border-bottom: 1px solid #d8d8d8;
+  opacity: 0.93;
+  display: flex;
+  color: #353535;
+}
+
+.list li {
+  display: inline-block;
+  margin-right: 10px;
+  padding-bottom: 7px;
+}
+
+.list a {
+  font-size: smaller;
+  text-decoration: none;
+  color: #292828;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 5px 5px 0px rgb(224, 125, 251);
+  border: 1px solid black;
+  transition: border-color 0.1s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Include transform in the transition */
+  display: inline-block; /* or display: block; */
+  opacity: 0.9;
+}
+
+.list a:hover {
+  box-shadow: 0px 0px 0px rgb(171, 62, 62);
+  border-color: transparent;
+  transform: translateX(3px) translateY(4px);
+}
+
+.login-button {
+  margin-left: auto;
+}
