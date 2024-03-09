@@ -55,8 +55,8 @@ function DropArea() {
         alt=""
         className={styles["drop-png"]}
       />
-      <div className="image-preview" id="imagePreview">
-        <img src={imageUrl} alt="" />
+      <div className={styles["image-preview"]} id="imagePreview">
+        {imageUrl && <img src={imageUrl} alt="" />}
         <p id="imageMessage"></p>
       </div>
     </div>

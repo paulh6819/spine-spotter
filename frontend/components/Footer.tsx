@@ -38,7 +38,7 @@ function Footer() {
           href="https://www.instagram.com/hendos_photos/"
           target="_blank"
           rel="noopener noreferrer"
-          className="social-icon"
+          className={styles["social-icon"]}
         >
           <FontAwesomeIcon icon={faInstagram} />
         </a>
