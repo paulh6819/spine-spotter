@@ -28,3 +28,5 @@ this exact format - which means excluding ANY explanatory text, I repeat, no tex
   "author": “example author”,
   "subtitle": "example subtitle"
 },  - The following is the text that needs parsing: `;
+
+export const apiKEYGoogleBooks = process.env.GOOGLE_API_KEY;
