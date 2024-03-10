@@ -27,17 +27,18 @@ export async function processImage(req: Request, res: Response) {
     const parsedGPTResult = JSON.parse(gptPayload);
 
     //getting books information from googles book API
+    const allBooksDataBackFromGooglesBooksAPI = [];
     for (const bookObj of parsedGPTResult) {
       if (!bookObj?.title) {
         return;
       }
       const booksData = await googleBooksAPIProcessing(bookObj.title);
-      console.log("book data from googles book API", booksData);
+      allBooksDataBackFromGooglesBooksAPI.push(booksData);
     }
 
     res.json({
       serverMessage: "Image processed successfully",
-      data: JSON.stringify(gptPayload),
+      data: JSON.stringify(allBooksDataBackFromGooglesBooksAPI),
     });
   } catch (error) {
     // Log the error or handle it accordingly
