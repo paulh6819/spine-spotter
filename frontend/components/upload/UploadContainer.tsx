@@ -2,7 +2,11 @@ import { useState } from "react";
 import DropArea from "./DropArea";
 import UpLoadFile from "./UpLoadFile";
 
-export function UploadContainer() {
+type UploadContainerProps = {
+  setBooksData: (data: any) => void;
+};
+
+export function UploadContainer({ setBooksData }: UploadContainerProps) {
   const [imageUrl, setImageUrl] = useState("");
 
   async function processImage(file: File) {
@@ -18,7 +22,7 @@ export function UploadContainer() {
       });
       if (response.ok) {
         const { data } = await response.json();
-        console.log(JSON.parse(data));
+        setBooksData(JSON.parse(data));
       } else {
         console.warn("response failed:", response);
       }
