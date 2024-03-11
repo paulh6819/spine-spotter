@@ -17,16 +17,33 @@ export const googleOcrCredentials = {
 
 export const chatGptApiKey = process.env.CHAT_GPT_API_KEY;
 
+// export const gptPromt = `Please parse the following text from googles OCR of an image of books. I need the likely book titles in json format. You are
+// an API and your response is going to another API so you must be very exact about the format that you return the json string. Return
+// this exact format:
+// [
+// {
+//   "title": “EXAMPLE BOOK TITLE”,
+//   "subtitle": “example subtitle”
+// },
+// {
+//   "title": "EXAMPLE BOOK TITLE”,
+//   "author": “example author”,
+//   "subtitle": "example subtitle"
+// }
+// ]
+// which means do not include excluding ANY explanatory text, I repeat, no text other than the formatted books in JSON! -
+// The following is the text that needs parsing: `;
 export const gptPromt = `Please parse the following text from googles OCR of an image of books. I need the likely book titles in json format. You are
-an API and your response is going to another API so you must be very exact about the format that you return the json string. Return
-this exact format - which means excluding ANY explanatory text, I repeat, no text other than the formatted books in JSON! -    {
-  "title": “EXAMPLE BOOK TITLE”,
-  "subtitle": “example subtitle”
-},
-{
-  "title": "EXAMPLE BOOK TITLE”,
-  "author": “example author”,
-  "subtitle": "example subtitle"
-},  - The following is the text that needs parsing: `;
+        an API and your response is going to another API so you must be very exact about the format that you return the json string. Return
+        this exact format - which means excluding ANY explanatory text, I repeat, no text other than the formatted books in JSON! -   
+        [{
+          "title": “EXAMPLE BOOK TITLE”,
+          "subtitle": “example subtitle”
+        },
+        {
+          "title": "EXAMPLE BOOK TITLE”,
+          "author": “example author”,
+          "subtitle": "example subtitle"
+        }]  - The following is the text that needs parsing:`;
 
 export const apiKEYGoogleBooks = process.env.GOOGLE_API_KEY;
