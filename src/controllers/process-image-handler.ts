@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { extractTextFromImage } from "./googleOCRProcessing.js";
 import { parseTitlesWithChatGPT } from "./parseTitlesWithChatGPT.js";
+import { googleBooksAPIProcessing } from "./google-books-api-processing.js";
 
 export async function processImage(req: Request, res: Response) {
   try {
@@ -17,16 +18,26 @@ export async function processImage(req: Request, res: Response) {
     }
 
     //parse titles with chatGPT's API
-    const parsedTitles = await parseTitlesWithChatGPT(ocrResult);
-    if (!parsedTitles) {
+    const gptPayload = await parseTitlesWithChatGPT(ocrResult);
+    if (!gptPayload) {
       return res
         .status(500)
         .json({ error: "Failed to parse titles from OCR with chatGPT" });
     }
+    const parsedGPTResult = JSON.parse(gptPayload);
+
+    //getting books information from googles book API
+    for (const bookObj of parsedGPTResult) {
+      if (!bookObj?.title) {
+        return;
+      }
+      const booksData = await googleBooksAPIProcessing(bookObj.title);
+      console.log("book data from googles book API", booksData);
+    }
 
     res.json({
       serverMessage: "Image processed successfully",
-      data: JSON.stringify(parsedTitles),
+      data: JSON.stringify(gptPayload),
     });
   } catch (error) {
     // Log the error or handle it accordingly
