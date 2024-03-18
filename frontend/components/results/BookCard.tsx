@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { BookData } from "../../App";
 import { shortenText } from "../../utils/formatting";
 import styles from "./BookCard.module.css";
+import { BooksDataContext } from "../../contexts/BooksDataContext";
 
 type BookCardProps = {
   book: BookData;
+  bookDataIndex?: number;
 };
 
-export function BookCard({ book }: BookCardProps) {
+export function BookCard({ book, bookDataIndex }: BookCardProps) {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [fullText, setFullText] = useState(false);
+  const { booksData, setBooksData } = useContext(BooksDataContext);
+
+  function deleteBook() {
+    if (typeof bookDataIndex === "undefined") return;
+    const newBooksData = Array.from(booksData);
+    newBooksData.splice(bookDataIndex, 1);
+    setBooksData(newBooksData);
+  }
+
   return (
     <div className={styles["book-card-wrapper"]}>
       <div className={styles["book-style-wrapper"]}>
@@ -48,35 +59,44 @@ export function BookCard({ book }: BookCardProps) {
       </div>
       {detailsOpen && (
         <>
-          ({" "}
           <a href={book.previewLink ?? "#"} target="_blank" rel="noreferrer">
-            <span style={{ color: "gray" }}> Link to Google books:</span>
+            <span style={{ paddingLeft: "1rem", color: "gray" }}>
+              {" "}
+              Link to Google books
+            </span>
           </a>
-          <hr />
-          <p>
+          <hr className={styles.hr} />
+          <p className={styles.description}>
             {fullText === true
-              ? ""
+              ? null
               : book.description
               ? shortenText(book.description, 80)
               : "No summary found."}
 
-            <p>{fullText && book.description}</p>
+            {fullText && book.description}
 
             {/* style button below on css page, make sure it's indicated that it's clickable */}
-            {book.description && (
-              <button onClick={() => setFullText(true)}>...</button>
-            )}
+            {book.description?.split(" ").length > 81 &&
+              !fullText &&
+              book.description && (
+                <button
+                  onClick={() => {
+                    setFullText(true);
+                  }}
+                  className={styles.ellipses}
+                >
+                  (...)
+                </button>
+              )}
           </p>
-          <hr />)
         </>
       )}
       {/* <p>{isbn13 && <p>ISBN-13: {isbn13}</p>}</p> */}
-      <button
-        onClick={() => console.log("delete this id", book.id)}
-        className={styles["close-button"]}
-      >
-        X
-      </button>
+      {typeof bookDataIndex !== "undefined" && (
+        <button onClick={deleteBook} className={styles["close-button"]}>
+          X
+        </button>
+      )}
     </div>
   );
 }
