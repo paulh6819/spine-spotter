@@ -21,6 +21,7 @@ export async function parseTitlesWithChatGPT(ocrText: string) {
   for await (const part of stream) {
     responseContent += part.choices[0]?.delta?.content || "";
   }
+  console.log("responseContent", responseContent);
 
   return responseContent;
 }

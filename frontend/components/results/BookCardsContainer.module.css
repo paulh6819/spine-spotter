@@ -1,0 +1,79 @@
+.book-card-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 4px;
+  width: 90%;
+  margin: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 6px 6px 0px rgb(1 38 224 / 40%);
+  border: 1px solid #2545b680;
+  transition: transform 0.2s ease-in-out; /* Smooth transition for the transform */
+  flex-direction: column;
+  position: relative;
+}
+
+/* .book-card-container:hover {
+  transform: scale(1.02); /* Scale the container to 105% of its size */
+
+.see-more-versions {
+  background-color: white;
+  box-shadow: 3px 3px 0px rgba(1, 38, 224, 0.195);
+  bottom: 9px;
+  right: 12px;
+  position: absolute;
+  /* transform: translate(25%, -0%); */
+  border: 1px solid #2545b680;
+  border-radius: 4px;
+
+  font-family: "Futura", sans-serif;
+}
+
+.see-more-versions:hover {
+  box-shadow: 0px 0px 0px rgb(179, 175, 194);
+  border-color: transparent;
+  transform: translateX(3px) translateY(4px);
+  transition: border-color 0.1s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Include transform in the transition */
+}
+
+.arrow {
+  height: 12px;
+  width: 12px;
+}
+
+.closed {
+  transform: rotate(270deg);
+}
+
+.first-book {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  opacity: 1;
+  transform: scale(1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.more-books-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.33rem;
+}
+
+.blue-shadow {
+  box-shadow: 6px 6px 0px rgb(1 38 224 / 40%);
+}
+
+.pink-shadow {
+  box-shadow: 6px 6px 0px rgba(234, 81, 236, 0.4);
+}
+
+.yellow-shadow {
+  box-shadow: 6px 6px 0px #fcf6bd;
+}
+
+.green-shadow {
+  box-shadow: 6px 6px 0px rgba(60, 184, 120, 0.4);
+}
