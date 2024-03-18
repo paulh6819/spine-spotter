@@ -11,8 +11,8 @@ function DropArea({ callback, imageUrl }: DropAreaProps) {
     event.preventDefault();
 
     const file = event.dataTransfer.files[0];
-    if (!file || !file.type.match(/^image\//)) {
-      console.error("there is no photo. need to code and actual error later");
+    if (!file) {
+      console.error("Please select an image file.");
       return;
     }
 

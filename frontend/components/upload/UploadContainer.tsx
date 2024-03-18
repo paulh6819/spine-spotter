@@ -8,6 +8,11 @@ export function UploadContainer() {
   const { setBooksData } = useContext(BooksDataContext);
 
   async function processImage(file: File) {
+    if (!file || !file.type.match(/^image\//)) {
+      console.error("Please select an image file.");
+      return;
+    }
+
     const fileUrl = URL.createObjectURL(file);
     setImageUrl(fileUrl);
 
@@ -22,7 +27,7 @@ export function UploadContainer() {
         const { data } = await response.json();
         setBooksData(JSON.parse(data));
       } else {
-        console.warn("response failed:", response);
+        console.warn("Response failed:", response);
       }
     } catch (error) {
       console.log(error);
