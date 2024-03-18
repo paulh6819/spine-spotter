@@ -9,7 +9,7 @@ export async function extractTextFromImage(imageBuffer: any) {
     if (!result.textAnnotations) {
       throw new Error("text annotaions does not exist on OCR result. PH");
     }
-
+    console.log("result.textAnnotations", result.textAnnotations);
     const text = result.textAnnotations.length
       ? result.textAnnotations[0]?.description
       : "";

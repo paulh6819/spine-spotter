@@ -32,6 +32,10 @@ type BookData = {
     currencyCode: string;
   };
   buyLink: string;
+  isbn: {
+    type: string;
+    identifier: string;
+  }[];
 };
 
 export async function googleBooksAPIProcessing(bookTitle: string) {
@@ -42,6 +46,7 @@ export async function googleBooksAPIProcessing(bookTitle: string) {
   try {
     //this is what's bringing back the actul data from googles book API
     const googleBooksResponse = await fetch(constructedURL);
+    console.log("googleBooksResponse", googleBooksResponse);
     if (googleBooksResponse.ok) {
       const parsedResponse = await googleBooksResponse.json();
       const booksData: BookData[] = [];
@@ -65,9 +70,11 @@ export async function googleBooksAPIProcessing(bookTitle: string) {
           listPrice: item.saleInfo.listPrice,
           retailPrice: item.saleInfo.retailPrice,
           buyLink: item.saleInfo.buyLink,
+          isbn: item.volumeInfo.industryIdentifiers,
         };
         booksData.push(data);
       }
+      console.log("booksData", booksData);
       return booksData;
     } else {
       console.log("Fetch from google books failed", googleBooksResponse);
