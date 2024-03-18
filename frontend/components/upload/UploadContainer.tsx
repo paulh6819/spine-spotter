@@ -18,6 +18,32 @@ export function UploadContainer() {
 
     const formData = new FormData();
     formData.append("image", file);
+
+    try {
+      const eventSource = await fetch("/process-image-stream", {
+        method: "post",
+        body: formData,
+      });
+      if (eventSource.ok) {
+        const reader = eventSource.body
+          ?.pipeThrough(new TextDecoderStream())
+          .getReader();
+        if (!reader) {
+          throw new Error("failed to create reader");
+        }
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) {
+            break;
+          }
+          const output = await JSON.parse(value);
+          console.log(output);
+        }
+      } else {
+        console.warn("Response failed:", eventSource);
+      }
+    } catch (error) {}
+
     try {
       const response = await fetch("/process-image", {
         method: "post",

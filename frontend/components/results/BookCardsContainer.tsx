@@ -3,6 +3,7 @@ import { BookCard } from "./BookCard";
 import styles from "./BookCardsContainer.module.css";
 import { useState } from "react";
 import arrowImage from "../../assets/arrow.png";
+import { v4 as uuidv4 } from "uuid";
 
 type BookCardsContainerProps = {
   bookData: BookData[];
@@ -61,7 +62,7 @@ export function BookCardsContainer({
             <div
               className={`${styles["book-card-container"]} ${styles[shadowColor]}`}
             >
-              <BookCard key={book.id} book={book} />
+              <BookCard key={uuidv4()} book={book} />
             </div>
           ))}
         </ul>
