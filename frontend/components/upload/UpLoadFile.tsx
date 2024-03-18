@@ -7,7 +7,7 @@ type UploadFileProps = {
 function UpLoadFile({ callback }: UploadFileProps) {
   function handleFileSelect(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files ? event.target.files[0] : null;
-    if (!file || !file.type.match(/^image\//)) {
+    if (!file) {
       console.error("Please select an image file.");
       return;
     }
@@ -18,17 +18,16 @@ function UpLoadFile({ callback }: UploadFileProps) {
   return (
     <>
       <div className={styles["upload-container"]}>
-        {/* Explicitly setting htmlFor="file-upload" to match input id */}
         <label className={styles["upload-button"]} htmlFor="file-upload">
           Or click here to upload
         </label>
       </div>
-      {/* Use a consistent id "file-upload" that matches the htmlFor attribute of the label */}
+
       <input
-        id="file-upload" // This needs to match the htmlFor attribute of the label
+        id="file-upload"
         type="file"
         onChange={handleFileSelect}
-        style={{ display: "none" }} // Hide the actual input but keep it functional
+        style={{ display: "none" }}
       />
     </>
   );

@@ -37,7 +37,6 @@ export function BookCardsContainer({
             />
           </div>
         )}
-        {/* Example: A button to toggle viewing of more books */}
         {otherBooks.length > 0 && (
           <button
             className={styles["see-more-versions"]}

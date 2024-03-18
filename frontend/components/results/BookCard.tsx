@@ -75,10 +75,9 @@ export function BookCard({ book, bookDataIndex }: BookCardProps) {
 
             {fullText && book.description}
 
-            {/* style button below on css page, make sure it's indicated that it's clickable */}
-            {book.description?.split(" ").length > 81 &&
-              !fullText &&
-              book.description && (
+            {book.description &&
+              book.description.split(" ").length > 81 &&
+              !fullText && (
                 <button
                   onClick={() => {
                     setFullText(true);
@@ -91,7 +90,6 @@ export function BookCard({ book, bookDataIndex }: BookCardProps) {
           </p>
         </>
       )}
-      {/* <p>{isbn13 && <p>ISBN-13: {isbn13}</p>}</p> */}
       {typeof bookDataIndex !== "undefined" && (
         <button onClick={deleteBook} className={styles["close-button"]}>
           X
