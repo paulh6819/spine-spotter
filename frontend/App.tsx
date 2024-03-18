@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { UploadContainer } from "./components/upload/UploadContainer";
 import { useState } from "react";
 import { ResultsContainer } from "./components/results/ResultsContainer";
+import { BooksDataContext } from "./contexts/BooksDataContext";
 
 export type BookData = {
   id: string;
@@ -16,7 +17,7 @@ export type BookData = {
   description: string;
   pageCount: number;
   categories: string[];
-  imageLinks: {
+  imageLinks?: {
     smallThumbnail: string;
     thumbnail: string;
     small: string;
@@ -29,15 +30,19 @@ export type BookData = {
   country: string;
   forSaleOnGoogleBooks: boolean;
   availibleAsGoogleEbook: boolean;
-  listPrice: {
+  listPrice?: {
     amount: number;
     currencyCode: string;
   };
-  retailPrice: {
+  retailPrice?: {
     amount: number;
     currencyCode: string;
   };
   buyLink: string;
+  isbn?: {
+    type: string;
+    identifier: string;
+  }[];
 };
 
 function App() {
@@ -45,13 +50,15 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <main className="main-container">
-        <h1 style={{ color: "#4c4b4b", padding: " 11px" }}>
-          How much are the books worth infront of you?
-        </h1>
-        <UploadContainer setBooksData={setBooksData} />
-        <ResultsContainer booksData={booksData} />
-      </main>
+      <BooksDataContext.Provider value={{ booksData, setBooksData }}>
+        <main className="main-container">
+          <h1 style={{ color: "#4c4b4b", padding: " 11px" }}>
+            How much are the books worth infront of you?
+          </h1>
+          <UploadContainer />
+          {booksData && <ResultsContainer />}
+        </main>
+      </BooksDataContext.Provider>
       <Footer />
     </div>
   );

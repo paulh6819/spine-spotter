@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import DropArea from "./DropArea";
 import UpLoadFile from "./UpLoadFile";
+import { BooksDataContext } from "../../contexts/BooksDataContext";
 
-type UploadContainerProps = {
-  setBooksData: (data: any) => void;
-};
-
-export function UploadContainer({ setBooksData }: UploadContainerProps) {
+export function UploadContainer() {
   const [imageUrl, setImageUrl] = useState("");
+  const { setBooksData } = useContext(BooksDataContext);
 
   async function processImage(file: File) {
     const fileUrl = URL.createObjectURL(file);
