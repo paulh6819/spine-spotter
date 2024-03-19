@@ -34,13 +34,13 @@ router.post("/detectLabels", upload.single("image"), async (req, res) => {
     );
 
     // Step 2: Use ChatGPT to parse OCR result into likely book titles
-    const chatGPTResult = await parseTitlesWithChatGPT(ocrResult);
-    res.write(
-      `data: ${JSON.stringify({
-        stage: "ChatGPT parsing complete",
-        chatGPTResult,
-      })}\n\n`
-    );
+    // const chatGPTResult = await parseTitlesWithChatGPT(ocrResult);
+    // res.write(
+    //   `data: ${JSON.stringify({
+    //     stage: "ChatGPT parsing complete",
+    //     chatGPTResult,
+    //   })}\n\n`
+    // );
 
     // Step 3: Fetch book information from Google Books API
     // const booksInfo = await fetchBooksInfo(chatGPTResult.titles);

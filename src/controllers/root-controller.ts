@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { processImage, processImageSSE } from "./process-image-handler.js";
+import { processImageSSE } from "./process-image-handler.js";
 import multer from "multer";
 
 const router = Router();
@@ -11,7 +11,7 @@ router.get("/hello", (_req, res) => {
   res.json({ serverMessage: "hello world" });
 });
 
-router.post("/process-image", upload.single("image"), processImage);
+router.post("/process-image", upload.single("image"));
 
 //server side events
 router.post("/process-image-stream", upload.single("image"), processImageSSE);
