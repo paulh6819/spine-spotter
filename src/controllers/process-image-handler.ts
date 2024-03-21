@@ -2,7 +2,7 @@ import { Request, Response, response } from "express";
 import { extractTextFromImage } from "./googleOCRProcessing.js";
 import {
   parseTitlesWithChatGPT,
-  parseTitlesWithChatGPTSEE,
+  parseTitlesWithChatGPTSSE,
 } from "./parseTitlesWithChatGPT.js";
 import { googleBooksAPIProcessing } from "./google-books-api-processing.js";
 
@@ -76,7 +76,7 @@ export async function processImageSSE(req: Request, res: Response) {
     //streaming approach
 
     // Adjusted to handle streaming data from parseTitlesWithChatGPT
-    const gptPayload = await parseTitlesWithChatGPTSEE(
+    const gptPayload = await parseTitlesWithChatGPTSSE(
       ocrResult,
       (chunk: string) => {
         const stageTwoResponse = { stage: "two", payload: chunk };

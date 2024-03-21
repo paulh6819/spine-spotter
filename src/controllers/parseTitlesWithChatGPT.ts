@@ -36,7 +36,7 @@ export async function parseTitlesWithChatGPT(ocrText: string) {
   return responseContent;
 }
 
-export async function parseTitlesWithChatGPTSEE(
+export async function parseTitlesWithChatGPTSSE(
   ocrText: string,
   onChunk: (chunk: string) => void
 ) {
