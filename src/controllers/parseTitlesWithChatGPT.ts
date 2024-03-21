@@ -65,7 +65,6 @@ async function processStreamForTitles(
 
   for await (const part of stream) {
     const content: string = part.choices[0]?.delta?.content || "";
-    // console.log("Streaming content", content);
     fragment += content;
     totalContent += content;
     // Start or stop accumulating when encountering title boundaries
