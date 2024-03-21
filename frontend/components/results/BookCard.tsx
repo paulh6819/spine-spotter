@@ -3,6 +3,7 @@ import { BookData } from "../../App";
 import { shortenText } from "../../utils/formatting";
 import styles from "./BookCard.module.css";
 import { BooksDataContext } from "../../contexts/BooksDataContext";
+import notFoundImage from "../../assets/no_book_found_photo.webp";
 
 type BookCardProps = {
   book: BookData;
@@ -28,8 +29,8 @@ export function BookCard({ book, bookDataIndex }: BookCardProps) {
           className={`${styles["book-card-img"]} ${
             detailsOpen ? styles["details-open"] : ""
           }`}
-          src={book.imageLinks?.thumbnail}
-          alt={book.title}
+          src={book.imageLinks?.thumbnail ?? notFoundImage}
+          alt={book.title ?? "Loading..."}
         />
         <details
           className={styles["details"]}
@@ -38,14 +39,14 @@ export function BookCard({ book, bookDataIndex }: BookCardProps) {
             setDetailsOpen(target.open);
           }}
         >
-          <summary>{book.title}</summary>
+          <summary>{book.title ?? "Loading..."}</summary>
           <span>
             <span style={{ color: "gray" }}>Author:</span>
-            {book.authors}
+            {book.authors ?? ["Loading"]}
           </span>
           <span>
             <span style={{ color: "gray" }}>Publisher:</span>
-            {book.publisher}
+            {book.publisher ?? "Loading..."}
           </span>
           <span>
             <span style={{ color: "gray" }}>ISBN:</span>
