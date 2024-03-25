@@ -1,12 +1,15 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { chdir } from "process";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT ?? 3000;
 
 //middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+chdir("build");
+app.use(express.static("frontend"));
 
 //import routers here
 import rootRouter from "./controllers/root-controller.js";
