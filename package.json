@@ -11,7 +11,8 @@
     "build:frontend": "tsc -p frontend/tsconfig.json && vite build",
     "build:backend": "tsc",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node build/server.js"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
