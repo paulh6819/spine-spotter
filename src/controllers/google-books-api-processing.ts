@@ -46,7 +46,6 @@ export async function googleBooksAPIProcessing(bookTitle: string) {
   try {
     //this is what's bringing back the actul data from googles book API
     const googleBooksResponse = await fetch(constructedURL);
-    console.log("googleBooksResponse", googleBooksResponse);
     if (googleBooksResponse.ok) {
       const parsedResponse = await googleBooksResponse.json();
       const booksData: BookData[] = [];

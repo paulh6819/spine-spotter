@@ -8,28 +8,28 @@ import { ResultsContainer } from "./components/results/ResultsContainer";
 import { BooksDataContext } from "./contexts/BooksDataContext";
 
 export type BookData = {
-  id: string;
-  etag: string;
+  id?: string;
+  etag?: string;
   title: string;
-  authors: string[];
-  publisher: string;
-  publishedDate: string;
-  description: string;
-  pageCount: number;
-  categories: string[];
+  authors?: string[];
+  publisher?: string;
+  publishedDate?: string;
+  description?: string;
+  pageCount?: number;
+  categories?: string[];
   imageLinks?: {
-    smallThumbnail: string;
-    thumbnail: string;
-    small: string;
-    medium: string;
-    large: string;
-    extraLarge: string;
+    smallThumbnail?: string;
+    thumbnail?: string;
+    small?: string;
+    medium?: string;
+    large?: string;
+    extraLarge?: string;
   };
-  language: string;
-  previewLink: string;
-  country: string;
-  forSaleOnGoogleBooks: boolean;
-  availibleAsGoogleEbook: boolean;
+  language?: string;
+  previewLink?: string;
+  country?: string;
+  forSaleOnGoogleBooks?: boolean;
+  availibleAsGoogleEbook?: boolean;
   listPrice?: {
     amount: number;
     currencyCode: string;
@@ -38,7 +38,7 @@ export type BookData = {
     amount: number;
     currencyCode: string;
   };
-  buyLink: string;
+  buyLink?: string;
   isbn?: {
     type: string;
     identifier: string;
