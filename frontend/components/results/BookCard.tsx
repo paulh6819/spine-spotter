@@ -24,7 +24,11 @@ export function BookCard({ book, bookDataIndex }: BookCardProps) {
 
   return (
     <div className={styles["book-card-wrapper"]}>
-      <div className={styles["book-style-wrapper"]}>
+      <div
+        className={`${styles["book-style-wrapper"]} ${
+          detailsOpen ? styles["book-style-wrapper-open"] : ""
+        }`}
+      >
         <img
           className={`${styles["book-card-img"]} ${
             detailsOpen ? styles["details-open"] : ""
@@ -39,23 +43,31 @@ export function BookCard({ book, bookDataIndex }: BookCardProps) {
             setDetailsOpen(target.open);
           }}
         >
-          <summary>{book.title ?? "Loading..."}</summary>
-          <span>
-            <span style={{ color: "gray" }}>Author:</span>
-            {book.authors ?? ["Loading"]}
-          </span>
-          <span>
-            <span style={{ color: "gray" }}>Publisher:</span>
-            {book.publisher ?? "Loading..."}
-          </span>
-          <span>
-            <span style={{ color: "gray" }}>ISBN:</span>
-            {book.isbn?.length && book.isbn[0].identifier}
-          </span>
-          <span>
-            <span style={{ color: "gray" }}> Price on Google books:</span>
-            {book.listPrice ? book.listPrice.amount : "No price found."}
-          </span>
+          <summary
+            className={
+              detailsOpen ? styles["title-open"] : styles["title-closed"]
+            }
+          >
+            {book.title ?? "Loading..."}
+          </summary>
+          <div className={styles["book-info-style"]}>
+            <span>
+              <span style={{ color: "gray" }}>Author:</span>
+              {book.authors ?? ["Loading"]}
+            </span>
+            <span>
+              <span style={{ color: "gray" }}>Publisher:</span>
+              {book.publisher ?? "Loading..."}
+            </span>
+            <span>
+              <span style={{ color: "gray" }}>ISBN:</span>
+              {book.isbn?.length && book.isbn[0].identifier}
+            </span>
+            <span>
+              <span style={{ color: "gray" }}> Price on Google books:</span>
+              {book.listPrice ? book.listPrice.amount : "No price found."}
+            </span>
+          </div>
         </details>
       </div>
       {detailsOpen && (

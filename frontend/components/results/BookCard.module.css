@@ -37,6 +37,7 @@ li {
 
   background-color: white;
   border: none;
+  opacity: 0.86;
 }
 
 .details {
@@ -54,6 +55,7 @@ li {
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
   width: 95%;
+  opacity: 0.25;
 }
 
 .description {
@@ -89,4 +91,25 @@ li {
 }
 .ellipses:hover {
   text-decoration: underline;
+}
+
+.title-closed {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.title-open {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.book-info-style {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.book-style-wrapper-open {
+  margin-top: 40px;
 }
