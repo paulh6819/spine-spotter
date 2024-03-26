@@ -101,9 +101,11 @@ export async function processImageSSE(req: Request, res: Response) {
         return;
       }
       const booksData = await googleBooksAPIProcessing(bookObj.title);
-      if (!booksData) {
-        return;
-      }
+      console.log("Data from google books API", booksData);
+      const booksDataString = JSON.stringify(booksData);
+      console.log("this is the stringified books data", booksDataString);
+      const parsedString = JSON.parse(booksDataString);
+      console.log("this is the paresed books data string", parsedString);
       const stageThreeResponse = {
         stage: "three",
         payload: booksData,
