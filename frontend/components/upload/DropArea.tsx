@@ -1,5 +1,6 @@
 import { DragEvent } from "react";
 import styles from "./DropArea.module.css";
+import DragAndDropImage from "../../assets/book_drag_and_drop.png";
 
 type DropAreaProps = {
   callback: (file: File) => void;
@@ -33,8 +34,8 @@ function DropArea({ callback, imageUrl }: DropAreaProps) {
     >
       <h4 id="drag-and-drop-text">Drag and drop a photo of books here</h4>
       <img
-        src="./assets/book_drag_and_drop.png"
-        alt=""
+        src={DragAndDropImage}
+        alt="Drag and drop image"
         className={styles["drop-png"]}
       />
       <div className={styles["image-preview"]} id="imagePreview">
