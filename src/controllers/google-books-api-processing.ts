@@ -73,7 +73,6 @@ export async function googleBooksAPIProcessing(bookTitle: string) {
         };
         booksData.push(data);
       }
-      console.log("booksData", booksData);
       return booksData;
     } else {
       console.log("Fetch from google books failed", googleBooksResponse);
