@@ -94,7 +94,7 @@ export async function processImageSSE(req: Request, res: Response) {
     const parsedGPTResult = JSON.parse(gptPayload);
     // const stageTwoResponse = { stage: "two", payload: gptPayload };
     // res.write(JSON.stringify(stageTwoResponse));
-
+    console.log("this is parsedGPTresult", parsedGPTResult);
     // getting books information from googles book API
     for (const bookObj of parsedGPTResult) {
       if (!bookObj?.title) {

@@ -44,7 +44,7 @@ export function UploadContainer() {
             const book = [{ title: output.payload }];
             books = [...books, book];
 
-            console.log("this is the book", book, books.length);
+            console.log("this is the book title stage two", book, books.length);
             setBooksData(books);
           }
           if (output.stage === "three") {
