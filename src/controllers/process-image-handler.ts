@@ -101,6 +101,9 @@ export async function processImageSSE(req: Request, res: Response) {
         return;
       }
       const booksData = await googleBooksAPIProcessing(bookObj.title);
+      if (!booksData) {
+        return;
+      }
       const stageThreeResponse = {
         stage: "three",
         payload: booksData,
