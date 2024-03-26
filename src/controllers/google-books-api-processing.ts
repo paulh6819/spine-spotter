@@ -82,3 +82,95 @@ export async function googleBooksAPIProcessing(bookTitle: string) {
     console.warn(error);
   }
 }
+
+// Sort Methods:
+
+/**
+ * Take in an array of BookData & place its elements into ascending order by insertion sort.
+ * Precondition: `compare()` method for BookData objects must be implemented.
+ * 
+ * Postcondition: Provided BookData array is in ascending order.
+ */
+function insertionSort():void {}
+
+/**
+ * Take in an array of BookData & place its elements into ascending order by selection sort.
+ * Precondition: `compare()` method for BookData objects must be implemented.
+ * 
+ * Postcondition: Provided BookData array is in ascending order.
+ */
+function selectionSort():void {}
+
+
+// Search Methods:
+
+/**
+ * Using a linear search, find an element in an array of BookData by provided BookData.
+ * This could be thought of as the 'haystack' is a `BookData[]` 
+ * and the needle is a `BookData`
+ * 
+ * Params should be the BookData array to search, and the BookData obj to find.
+ * Optionally provide the number of elements as well -- How would we go about implementing
+ * this with& without passing in the number of elements?
+ * 
+ * Precondition: `equals()` method must be implemented for type BookData.
+ * 
+ * Prompt: When would we use a linear search? What are its pros/cons
+ */
+function linearSearch():number {return -1}
+
+/**
+ * Using a binary search, find an element in an array of BookData by provided BookData.
+ * This could be thought of as the 'haystack' is a `BookData[]` 
+ * and the needle is a `BookData`
+ * 
+ * Params should be the BookData array to search, and the BookData obj to find.
+ * Optionally provide the number of elements as well -- How would we go about implementing
+ * this with& without passing in the number of elements?
+ * 
+ * Precondition: `equals()` method must be implemented for type BookData.
+ * 
+ * Prompt: When would we use a binary search? What are its pros/cons
+ */
+function binarySearch():number {return -1}
+
+
+// Probably cover this way later.
+function binarySearchRecursive():number {return -1}
+
+
+
+
+
+/**
+ * "helpers" for searching & sorting algos. Comparable to overloaded operators.
+ * E.G.
+ *  `equals(someParam1:SomeType,someParam2: SomeType):boolean{...}` 
+ *  would essentially be `bool operator ==(const SomeType &someParam1, const SomeType &someParam2);`
+ */
+
+
+/**
+ * This function will be used to compare two BookData objects for equality.
+ * We'll consider two BookData objects to be equal if their id property are the same.
+ * 
+ * It should take in two arguments, both of type BookData. The first
+ * being considered the left hand value(LHV), and the second being the right hand value(RHV).
+ * 
+ * It should use the BookData.id property to see if the LHV's id
+ * is the same as the RHV's id. 
+ * If LHV.id is the same as RHV.id, we should return true.
+ */
+function equals():boolean {return false;}
+
+/**
+ * This function will be used to compare two BookData objects.
+ * 
+ * It should take in two arguments, both of type BookData. The first
+ * being considered the left hand value(LHV), and the second being the right hand value(RHV).
+ * 
+ * It should use the BookData.id property to see if the LHV
+ * is less than the RHV. 
+ * If LHV is less than RHV, we should return true.
+ */
+function compare():boolean {return false;}
