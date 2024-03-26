@@ -105,7 +105,7 @@ function selectionSort():void {}
 // Search Methods:
 
 /**
- * Using a linear search, find an element in an array of BookData by provided BookData.
+ * Implement a linear search, find an element in an array of BookData by provided BookData.
  * This could be thought of as the 'haystack' is a `BookData[]` 
  * and the needle is a `BookData`
  * 
@@ -120,7 +120,7 @@ function selectionSort():void {}
 function linearSearch():number {return -1}
 
 /**
- * Using a binary search, find an element in an array of BookData by provided BookData.
+ * Implement a binary search, find an element in an array of BookData by provided BookData.
  * This could be thought of as the 'haystack' is a `BookData[]` 
  * and the needle is a `BookData`
  * 
