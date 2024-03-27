@@ -4,7 +4,11 @@ import {
   parseTitlesWithChatGPT,
   parseTitlesWithChatGPTSSE,
 } from "./parseTitlesWithChatGPT.js";
-import { googleBooksAPIProcessing } from "./google-books-api-processing.js";
+import {
+  googleBooksAPIProcessing,
+  linearSearch,
+  BookData,
+} from "./google-books-api-processing.js";
 
 export async function processImage(req: Request, res: Response) {
   try {
@@ -100,11 +104,59 @@ export async function processImageSSE(req: Request, res: Response) {
       if (!bookObj?.title) {
         return;
       }
+
       const booksData = await googleBooksAPIProcessing(bookObj.title);
       const stageThreeResponse = {
         stage: "three",
         payload: booksData,
       };
+
+      const num = 8;
+      let randonObj: BookData = {
+        id: "q8Jx0AEACAAJ",
+        etag: " ",
+        title: " ",
+        authors: [" "],
+        publisher: " ",
+        publishedDate: " ",
+        description: " ",
+        pageCount: 1,
+        categories: [" "],
+        imageLinks: {
+          smallThumbnail: " ",
+          thumbnail: " ",
+          small: " ",
+          medium: " ",
+          large: " ",
+          extraLarge: " ",
+        },
+        language: " ",
+        previewLink: " ",
+        country: " ",
+        forSaleOnGoogleBooks: true,
+        availibleAsGoogleEbook: true,
+        listPrice: {
+          amount: 1,
+          currencyCode: " ",
+        },
+        retailPrice: {
+          amount: 1,
+          currencyCode: " ",
+        },
+        buyLink: " ",
+        isbn: [
+          {
+            type: " ",
+            identifier: " ",
+          },
+        ],
+      };
+
+      const response = linearSearch(
+        booksData as BookData[],
+        randonObj as BookData
+      );
+      console.log("this is the linear test", response);
       res.write(JSON.stringify(stageThreeResponse));
     }
 
